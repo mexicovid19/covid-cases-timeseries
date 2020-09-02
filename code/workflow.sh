@@ -12,18 +12,20 @@ conda activate  "$CONDA_ENV"
 set -euo pipefail
 
 
-REPO_DIR="$HOME/Documents/covid/repo_tidy"
-cd "$REPO_DIR/code"
+# Cmd below gets the directory where the script is located irrespective
+# of where it's called from (won't work if last component of path is symlink)
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+cd "$DIR"
 
 # Download latest dataset
 /bin/bash ./download_mirror.sh
 
-DATA_DIR=$REPO_DIR/tmp.*
+DATA_DIR=../tmp.*
 FILENAME="datos_abiertos_$(date -d "yesterday" +"%Y%m%d").zip"
 
 # Run python scripts and commit changes
 if [ -f  $DATA_DIR/$FILENAME ]; then
-    echo -e "\nDataset downloaded, running Python script\n"
+    echo -e "Running Python script\n"
     python parse_main_dataset.py $DATA_DIR/$FILENAME
     python update_daily_totals.py ; echo
 

@@ -7,13 +7,15 @@ URL="https://repounam.org/data/.input"
 ZIP_FILE="$(date -d "yesterday" +"%Y-%m-%d"_utf8.zip)"
 # The unicode of the csv file has been fixed
 
-REPO_DIR="$HOME/Documents/covid/repo_tidy"    ##### <--- local directory   ######
-cd "$REPO_DIR"
+
+# Cmd below gets the directory where the script is located irrespective
+# of where it's called from (won't work if last component of path is symlink)
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 FILENAME="datos_abiertos_$(date -d "yesterday" +"%Y%m%d").zip"
 
-# Create temporary directory
-TMP_DIR=$(mktemp -dp "$REPO_DIR")
+# Create temporary directory above the code directory
+TMP_DIR=$(mktemp -dp ..)
 echo -e "Temporary directory is $TMP_DIR\n"
 
 # We make sure that the tmp directory is deleted in case of error
