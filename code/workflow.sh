@@ -32,7 +32,7 @@ if [ -f  $DATA_DIR/$FILENAME ]; then
     rm -rf $DATA_DIR
     git add ../data/covid19_mex_* ; git add ../data/daily_totals/covid19_mex_*
     git commit -m "Automatic update"
-    #git push #-f fork
+    git push #-f fork
 else
     echo "ERROR: file not found"
 fi
