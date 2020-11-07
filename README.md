@@ -10,7 +10,7 @@ Our repo inherits the limitations of the original dataset, the most notable of w
 
 ## Date of assignment of cases
 
-The data published by the Ministry of Health comes with a significant delay due to a/ the intrisic time it takes to get a test result and b/ the time it takes to enter the patient information into the records. A positive case confirmed today could be in fact the result of a test done two weeks ago. As a result, there are two possible ways to count a positive case:
+The data published by the Ministry of Health comes with a significant delay due to a/ the intrinsic time it takes to get a test result and b/ the time it takes to enter the patient information into the records. A positive case confirmed today could be in fact the result of a test done two weeks ago. As a result, there are two possible ways to count a positive case:
 
 1. We assign the case to the date when the patient visited a clinic (this information is published within the official database), which we assume is also the date when the test sample was taken.
 2. We use the date when the result was included as a confirmed positive case in the official database.
